@@ -47,6 +47,7 @@ def delete_collection(collection_id):
         return
 
     log.info("Deleting collection [%r]: %r", collection.id, collection.label)
+    index_delete(collection_id)
     deleted_at = datetime.utcnow()
     for entity in collection.entities:
         # TODO: consider hard-deleting entities because the polyglot tagger
@@ -62,4 +63,3 @@ def delete_collection(collection_id):
     db.session.refresh(collection)
     collection.delete(deleted_at=deleted_at)
     db.session.commit()
-    index_delete(collection_id)

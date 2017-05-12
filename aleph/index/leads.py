@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 
 def delete_entity_leads(entity_id):
-    """Delete all related leads from the index."""
+    """Delete all entity-related leads from the index."""
     q = {
         'query': {
             'bool': {
